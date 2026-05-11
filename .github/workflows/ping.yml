@@ -1,0 +1,15 @@
+name: Keep HF Space Alive
+
+on:
+  schedule:
+    - cron: '*/45 * * * *'   # every 45 minutes
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping HF Space
+        run: |
+          curl -s https://YOUR_HF_USERNAME-dholpur-library-scraper.hf.space/health
+          echo "Pinged at $(date)"
